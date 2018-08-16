@@ -18,7 +18,7 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
         $this->Auth->allow(['login','logout']);
-        $this->Auth->config('login');
+        $this->Auth->setConfig('login');
 
     }
 
