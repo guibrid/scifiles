@@ -52,8 +52,8 @@ class FilesController extends AppController
           $queryCatalogues = $this->Files->find()->where(
                                     ['type' => 1,
                                     ['OR' => [
-                                                ['files.tarif_id' => 100],
-                                                ['files.tarif_id' => $user['tarif_id']]
+                                                ['tarif_id' => 100],
+                                                ['tarif_id' => $user['tarif_id']]
                                              ]
                                     ]]);
           $queryFactures = $this->Files->find()->where(
