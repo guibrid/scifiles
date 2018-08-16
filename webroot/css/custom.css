@@ -1,0 +1,21 @@
+/* My Style */
+.site_title {
+  text-align: center;
+  padding-left: 0;
+}
+div.profile_info {
+
+  width: 100%;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+div#tarif-file, div#user-file {
+  display: none;
+}
+
+div.login_form div.logo {
+  text-align: center;
+  margin-bottom: 0px;
+}
