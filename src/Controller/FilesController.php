@@ -22,7 +22,7 @@ class FilesController extends AppController
         parent::beforeFilter($event);
         // Donner acces à la page index si loguer
         if ($this->Auth->User('id')) {
-          $this->Auth->allow(['index']);
+          $this->Auth->allow(['index','download']);
         }
 
     }
