@@ -9,10 +9,10 @@
 
                 <?= $this->Form->create() ?>
                     <div>
-                        <?= $this->Form->input('username',['class'=>'form-control','placeholder'=>'Identifiant','label'=>false,'required'=>true]) ?>
+                        <?= $this->Form->control('username',['class'=>'form-control','placeholder'=>'Identifiant','label'=>false,'required'=>true]) ?>
                     </div>
                     <div>
-                        <?= $this->Form->input('password',['class'=>'form-control','placeholder'=>'Mot de passe','label'=>false,'required'=>true]) ?>
+                        <?= $this->Form->control('password',['class'=>'form-control','placeholder'=>'Mot de passe','label'=>false,'required'=>true]) ?>
                     </div>
                     <div>
                         <?= $this->Form->button(__('Connexion'),['class'=>'btn btn-primary btn-block btn-flat']); ?>
