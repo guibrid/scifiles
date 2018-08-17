@@ -58,12 +58,6 @@
                                       'target'              => '_blank' ] ) ?>
                             <?php if( isset($is_admin) && $is_admin === 1 ) { ?>
                               <?= $this->Html->link(
-                                   '<i class="fa fa-edit fa-2x"></i>',
-                                    [ 'action'=>'edit', $file->id ],
-                                    [ 'escape'              => false,  //use HTML en libellé
-                                      'class'               => 'icon',
-                                      'title'               => 'Modifier le fichier' ] ) ?>
-                              <?= $this->Html->link(
                                      '<i class="fa fa-trash-o fa-2x"></i>',
                                       [ 'action'=>'delete', $file->id ],
                                       [ 'escape'              => false,  //use HTML en libellé
