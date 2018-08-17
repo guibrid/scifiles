@@ -7,6 +7,7 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use Cake\Event\Event;
 use ArrayObject;
+use App\Utility\Toolbox;
 
 /**
  * Files Model
@@ -99,5 +100,13 @@ class FilesTable extends Table
       } else if ( $data['type'] == '2') {
         $data['tarif_id'] = '';
       }
+
+      // Renomer le non du fichier et du dossier lors de l'ajoute
+      if(isset($data['filename'])) {
+        $fileUpload = Toolbox::uploadFile(['file' => $data['filename'], 'validExtension' => [ 'zip']]);
+        $data['filename'] = $fileUpload['filename'];  // Récupére le nom final du fichier
+        $data['filedossier'] = $fileUpload['folder']; // Récupère le dossier de destiation
+      }
+    
     }
 }

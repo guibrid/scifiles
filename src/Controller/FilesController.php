@@ -81,11 +81,7 @@ class FilesController extends AppController
         $file = $this->Files->newEntity();
         if ($this->request->is('post')) {
             // Upload du fichier
-            $fileUpload = Toolbox::uploadFile(['file' => $this->request->data['filename'], 'validExtension' => [ 'zip']]);
-            $this->request->data['filename'] = $fileUpload['filename'];  // Récupére le nom final du fichier
-            $this->request->data['filedossier'] = $fileUpload['folder']; // Récupère le dossier de destiation
             $file = $this->Files->patchEntity($file, $this->request->getData());
-
             if ($this->Files->save($file)) {
                 $this->Flash->success(__('The file has been saved.'));
 
@@ -96,32 +92,6 @@ class FilesController extends AppController
         $tarifs = $this->Files->Tarifs->find('list', ['limit' => 200]);
         $users = $this->Files->Users->find('list', ['order' => ['company' => 'ASC']]);
         $this->set(compact('file', 'tarifs', 'users'));
-        $this->set('_serialize', ['file']);
-    }
-
-    /**
-     * Edit method
-     *
-     * @param string|null $id File id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $file = $this->Files->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $file = $this->Files->patchEntity($file, $this->request->getData());
-            if ($this->Files->save($file)) {
-                $this->Flash->success(__('The file has been saved.'));
-
-                return $this->redirect('/files/index');
-            }
-            $this->Flash->error(__('The file could not be saved. Please, try again.'));
-        }
-        $tarifs = $this->Files->Tarifs->find('list', ['limit' => 200]);
-        $this->set(compact('file', 'tarifs'));
         $this->set('_serialize', ['file']);
     }
 
