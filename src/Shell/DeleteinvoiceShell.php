@@ -18,11 +18,9 @@ class DeleteinvoiceShell extends Shell
                            ->where(['downloaded >' => 0, 'type' => 2]);
 
        foreach ($files as $file) {
-         $this->out(WWW_ROOT . 'files/catalogues/'.$file->filedossier.'/'.$file->filename);
          unlink(WWW_ROOT . 'files/catalogues/'.$file->filedossier.'/'.$file->filename);//Supprimer le fichier
          rmdir(WWW_ROOT . 'files/catalogues/'.$file->filedossier.'/'); //Supprimer le dossier
          $this->Files->delete($file);
-         //$this->out(WWW_ROOT . 'files/catalogues/'.$file->filedossier.'/'.$file->filename);
        }
 
 
