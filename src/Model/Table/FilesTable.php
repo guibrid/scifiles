@@ -107,6 +107,6 @@ class FilesTable extends Table
         $data['filename'] = $fileUpload['filename'];  // Récupére le nom final du fichier
         $data['filedossier'] = $fileUpload['folder']; // Récupère le dossier de destiation
       }
-    
+
     }
 }
