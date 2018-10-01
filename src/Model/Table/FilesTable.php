@@ -103,7 +103,7 @@ class FilesTable extends Table
 
       // Renomer le non du fichier et du dossier lors de l'ajoute
       if(isset($data['filename'])) {
-        $fileUpload = Toolbox::uploadFile(['file' => $data['filename'], 'validExtension' => ['zip','pdf','xls','xlsx','xlsm']]);
+        $fileUpload = Toolbox::uploadFile(['file' => $data['filename'], 'validExtension' => ['zip','rar','pdf','xls','xlsx','xlsm']]);
         $data['filename'] = $fileUpload['filename'];  // Récupére le nom final du fichier
         $data['filedossier'] = $fileUpload['folder']; // Récupère le dossier de destiation
       }
