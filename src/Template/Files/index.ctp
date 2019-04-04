@@ -47,7 +47,7 @@
                           <?php if( isset($is_admin) && $is_admin === 1 ) { ?>
                           <td><?= $file->tarif->name ?></td>
                           <?php } ?>
-                          <td><?= $file->modified->format('d-m-Y') ?></td>
+                          <td><?= $file->created->format('d-m-Y') ?></td>
                           <td class="actions">
                             <?= $this->Html->link(
                                    '<i class="fa fa-download fa-2x"></i>',
