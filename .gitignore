@@ -5,6 +5,7 @@
 /logs/*
 /tmp/*
 /webroot/files/catalogues/*
+/assets/product_pictures/*
 /vendor/*
 
 # OS generated files #
