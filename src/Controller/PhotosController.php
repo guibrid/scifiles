@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Photos Controller
@@ -119,5 +120,73 @@ class PhotosController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * find method
+     * List all the 'new' product and search in google image api images
+     * donwload and save the google image selected as picture product
+     */
+    public function find()
+    {
+        if ($this->request->is(['post'])) {
+            
+            $datas = $this->request->getData();
+
+            // Download image
+            // Rename and resize image
+            // upload on siteground serveur
+            // Save image data in photos table
+            $query = $this->Photos->query();
+            foreach ($datas['product'] as $key => $value) {
+                //Formatage des données pour l'insert/update
+                if(isset($value['url']) || !empty($value['customLink'])) {
+                    if(isset($value['url'])) { 
+                        $url = $value['url'];
+                    } else {
+                        $url = $value['customLink'];
+                    }
+                    $photoData = ['url' => $url,
+                                  'product_id' => $value['id'], 
+                                  'type' => 0, 
+                                  'active'=> 2];
+                } else {
+                    $photoData = ['url' => '-',
+                                  'product_id' => $value['id'], 
+                                  'type' => 0, 
+                                  'active'=> -1];
+                }
+
+                //Check si une photo existe
+                $nbrPhotos = $this->Photos->find()->where(['product_id' => $value['id']])->count();
+                //debug($nbrPhotos);
+                if($nbrPhotos === 0){ // Si aucun enregistrement n'hesite pour cette photo/produit on insert
+                    $query->insert(['url', 'product_id', 'type', 'active'])
+                          ->values($photoData);
+                } else {
+                    $query->update()
+                          ->set($photoData)
+                          ->where(['product_id' => $value['id']]); 
+                }
+
+            }
+
+            $query->execute();
+            
+         
+        }
+        // List all 'NEW' Product with no photo existing
+        $products = TableRegistry::get('Products');
+        $productQuery = $products->find('all')
+                                    //->where(['new' => 1, 'Products.active' <> 2, 'Photos.product_id IS'=> null])
+                                    //         'OR' => [['Photos.product_id IS'=> null], ['Photos.url' => '-']]])
+                                    //->where(['Photos.product_id IS'=> null, 'Products.active' => 1, 'new' => 1, ])
+                                    //->where(['Photos.product_id IS'=> null, 'Products.active' => 1 ])
+                                    ->leftJoinWith('Photos')
+                                    ->limit(1);
+                                    //->contain(['Photos', 'Brands', 'Origins', 'Categories', 'Subcategories']);
+        
+        $this->set(compact('productQuery'));
+
     }
 }
