@@ -180,7 +180,7 @@ class PhotosController extends AppController
         $productQuery = $products->find('all')
                                     //->where(['new' => 1, 'Products.active' <> 2, 'Photos.product_id IS'=> null])
                                     //         'OR' => [['Photos.product_id IS'=> null], ['Photos.url' => '-']]])
-                                    //->where(['Photos.product_id IS'=> null, 'Products.active' => 1, 'new' => 1, ])
+                                    ->where(['Photos.product_id IS'=> null])
                                     //->where(['Photos.product_id IS'=> null, 'Products.active' => 1 ])
                                     ->leftJoinWith('Photos')
                                     ->limit(1);
