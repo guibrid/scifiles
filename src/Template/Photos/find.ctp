@@ -43,7 +43,7 @@ Find photos
 
   var gencod = <?php echo  h($product->gencode); ?>;
 
-  var googleapikey = 'AIzaSyAltZsrlia-za2iJUYZRdIdNQp3YNLwocM';
+  var googleapikey = 'AIzaSyDuXssShflPzyajAwyBhE8U7-s0o_kbmV0';
 
   var url = 'https://www.googleapis.com/customsearch/v1?start=1&q=' + gencod + '&cx=004174363264685956401:feculhur8rm&imgType=photo&searchType=image&num=7&key=' + googleapikey;
  
