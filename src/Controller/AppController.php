@@ -101,7 +101,7 @@ class AppController extends Controller
     public function beforeFilter(Event $event) {
         // On passe à toutes les views les variable du theme
         Configure::write('Theme', [
-            'title' => 'SC International - Espace client',
+            'title' => 'Hecate Export - Espace client',
             'logo' => [
                 'mini' => '<b>S</b>C',
                 'large' => '<b>Gentelella</b>Theme'

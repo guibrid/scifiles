@@ -1,7 +1,7 @@
     <!-- footer content -->
     <footer>
         <div class="pull-right">
-          © <a href="http://sc-international.fr" target="_blank">SC International</a>.
+          © <a href="https://hecate-export.com" target="_blank">Hecate Export</a>.
         </div>
         <div class="clearfix"></div>
     </footer>

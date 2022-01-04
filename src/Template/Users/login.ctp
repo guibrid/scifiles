@@ -26,7 +26,7 @@
                         <br />
 
                         <div>
-                            <p>© SC International</p>
+                            <p>© Hecate Export</p>
                         </div>
                     </div>
                 <?= $this->Form->end() ?>
