@@ -94,12 +94,12 @@ class FilesTable extends Table
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
     {
       // Si c'est un catalogue on met vide user_id
-      /*if( $data['type'] == '1') {
+      if( $data['type'] == '1') {
         $data['user_id'] = '';
       // Si c'est une facture on met vide tarif_id
       } else if ( $data['type'] == '2') {
         $data['tarif_id'] = '';
-      }*/
+      }
 
       // Renomer le non du fichier et du dossier lors de l'ajoute
       if(isset($data['filename'])) {
